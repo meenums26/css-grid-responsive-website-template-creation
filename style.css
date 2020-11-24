@@ -1,0 +1,211 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    color:#000000;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    max-width:100%;
+    height: 100vh;
+    margin:0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    grid-template-rows: 1fr 4fr 1.2fr 1.2fr;
+    grid-template-areas: "logo   logo   header"
+                         "main   main   imgBox"
+                         "quotes quotes imgBox"
+                         "btn1   btn2   imgBox";
+}
+.logo{
+    grid-area:logo;
+    background-color: rgb(216, 245, 220);
+    display: flex;
+    align-items: center;
+    padding-left: 125px;
+}
+.logo a{
+    color:rgba(14, 75, 6, 0.933);
+    font-size: 24px;
+    font-weight: 700;
+}
+.main{
+    grid-area:main;
+    background-color: #fff;
+    padding: 0 125px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.main h1{
+    font-size: 36px;
+    line-height: 49px;
+    font-weight: 700;
+    margin-bottom:30px;
+    max-width: 290px;
+    animation-delay: .5s;
+}
+.main p{
+    animation-delay: 1s;
+}
+.pop-in{
+    animation: popin 2s cubic-bezier(0,-0.04, 0.32, 1.28) forwards;
+    opacity: 0;
+}
+@keyframes popin{
+    from{
+opacity: 0;
+transform: translateX(-10px) scale(0.8);
+    }
+    to{
+opacity: 1;
+transform:none;
+    }
+}
+.quotes{
+    grid-area:quotes;
+    background-color: rgb(216, 245, 220);
+    padding-left: 125px;
+    display: flex;
+    align-items: center;
+}
+.quotes h2{
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 33px ;
+}
+.btn{
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .5s ease-in-out;
+}
+.btn:hover{
+    background-color: rgb(85, 81, 76);
+}
+.btn a{
+    color:#fff;
+}
+.btn1{
+    grid-area:btn1;
+    background-color: rgb(52, 211, 65);
+}
+.btn2{
+    grid-area:btn2;
+    background-color: rgb(94, 233, 89);
+}
+
+header{
+    grid-area:header;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    padding-right: 30px;
+}
+header ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+    display: flex;
+}
+header ul li a{
+    padding:30px 15px;
+    color:#000000;
+    font-weight: 700;
+    transition: color .2s ease-in;
+}
+header ul li a:hover{
+    color:rgba(35, 167, 18, 0.933);
+}
+.img-box{
+    grid-area:imgBox;
+    background-color: grey;
+    overflow: hidden;
+    background: url(/images//img8.jpg) no-repeat top center;
+    background-size: cover;
+}
+.img-box img{
+    width:100%;
+}
+.slide-in{
+    animation: slideIn 2s ease-in-out 1s forwards;
+    opacity: 0;
+}
+@keyframes slideIn{
+    0%{
+        opacity: 0;
+        transform: translateX(180px) skewY(2deg);
+    }
+    100%{
+        opacity: 1;
+        transform:none;
+    }
+}
+@media(max-width:767px){
+   
+    .container{
+        height:auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"logo   logo"
+                            "header header"
+                            "imgBox imgBox"
+                            "main   main"
+                            "quotes quotes"
+                            "btn1   btn2";
+        grid-template-rows: 100px 50px 70vh auto auto 70px;                    
+    }
+    .logo{
+        padding-left: 0;
+        justify-content: center;
+    }
+    .main{
+        padding:50px 24px;
+    }
+    .main h1{
+        font-size:30px;
+        line-height: 40px;
+        margin-bottom: 12px;
+    }
+    .quotes{
+        padding:20px 24px;
+    }
+    .quotes h2{
+        font-size: 20px;
+        line-height: 28px;
+    }
+    header{
+        padding-right: 0; 
+        justify-content: center;
+        background-color: rgb(149, 196, 180);
+    }
+    header li ul a{
+        padding: 30px 25px;
+    }
+    .btn a{
+        font-size: 18px;
+    }
+}
+
+@media(min-width:768px)and(max-width:950px){
+   .logo{
+       padding:0 25px;
+   }
+   .main{
+       padding:0 25px;
+   }
+   .quotes{
+       padding:0 25px;
+   }
+}
